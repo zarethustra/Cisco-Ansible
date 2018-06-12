@@ -25,8 +25,8 @@
       register: clock  
     - debug: var=clock.stdout_lines    
 
-    - debug: var=inventory_hostname
-    - debug: var=ansible_hostname
-    - debug: var=hostvars        
+    # - debug: var=inventory_hostname
+    # - debug: var=ansible_hostname
+    # - debug: var=hostvars        
 
 
