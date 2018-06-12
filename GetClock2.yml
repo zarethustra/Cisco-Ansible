@@ -1,0 +1,32 @@
+---
+- hosts: switches-3650
+  connection: local
+  gather_facts: False
+  
+  vars_prompt:
+    - name: "user"
+      prompt: "username"
+      private: no  
+    - name: "password"
+      prompt: "Enter password"
+      private: yes
+
+  vars:
+    cli:
+      host: "{{ inventory_hostname }}"
+      username: "{{user}}"
+      password: "{{password}}"
+  
+  tasks:
+    - name: run show clock
+      ios_command: 
+        commands: show clock
+        provider: "{{ cli }}"
+      register: clock  
+    - debug: var=clock.stdout_lines    
+
+    - debug: var=inventory_hostname
+    - debug: var=ansible_hostname
+    - debug: var=hostvars        
+
+
