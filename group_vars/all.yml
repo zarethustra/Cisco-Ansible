@@ -2,7 +2,8 @@
 ansible_connection: network_cli
 ansible_network_os: ios
 ansible_user: eng_fcc
-
+# ansible_become: yes
+# ansible_become_method: enable
 # use the below for generaly calling a playbook
 # ansible-playbook getclock.yml -u eng_fcc -k
 #Uncomment next line for enable (leave single space):

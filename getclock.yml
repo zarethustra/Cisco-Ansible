@@ -1,15 +1,15 @@
 ---
-- hosts: switches-3650
+- name: Show clock test
+  hosts: switches-3650
   gather_facts: no
-
   tasks:
-  - name: run show clock
-    ios_command: 
-      commands: 
-        - show clock
-    register: clock
-
-  - name: Display ouput  
-    debug: msg="{{ clock }}"    
+    - name: run show clock
+      ios_command: 
+        commands: 
+          - show clock
+      register: clock
+  
+    - name: Display ouput  
+      debug: msg="{{ clock }}"    
 
 
