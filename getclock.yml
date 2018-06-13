@@ -1,28 +1,15 @@
 ---
 - hosts: switches-3650
-  connection: network_cli
-  gather_facts: yes
-  
+  gather_facts: no
+
   tasks:
-  - name: obtain login credentials
-    # include_vars: secrets.yml
-
-  - name: Set Username and Password
-    set_fact:
-      remote_user: "{{ user}}"
-      ansible_ssh_pass: "{{ password }}"
-
-      # remote_user: "{{ creds['username'] }}"
-      # ansible_ssh_pass: "{{ creds['password'] }}"
   - name: run show clock
-      ios_command: 
-        commands: show clock
-        # provider: "{{ cli }}"
-      register: clock  
-    - debug: var=clock.stdout_lines    
+    ios_command: 
+      commands: 
+        - show clock
+    register: clock
 
-    # - debug: var=inventory_hostname
-    # - debug: var=ansible_hostname
-    # - debug: var=hostvars        
+  - name: Display ouput  
+    debug: msg="{{ clock }}"    
 
 

@@ -1,0 +1,23 @@
+---
+ansible_connection: network_cli
+ansible_network_os: ios
+ansible_user: eng_fcc
+
+# use the below for generaly calling a playbook
+# ansible-playbook getclock.yml -u eng_fcc -k
+#Uncomment next line for enable (leave single space):
+# auth_pass: 3n@bl3
+  # vars_prompt:
+  #   - name: "user"
+  #     prompt: "username"
+  #     private: no  
+  #   - name: "password"
+  #     prompt: "Enter password"
+  #     private: yes
+
+  # vars:
+  #   cli:
+  #     host: "{{ inventory_hostname }}"
+  #     username: "{{user}}"
+  #     password: "{{password}}"
+  
