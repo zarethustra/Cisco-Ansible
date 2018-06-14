@@ -1,0 +1,9 @@
+---
+- name: Gather network device facts
+  hosts: switches-3650
+  gather_facts: no
+  tasks:
+  - name: Backup config
+    ios_config:
+      backup: yes
+
