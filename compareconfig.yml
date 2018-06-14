@@ -1,5 +1,5 @@
 ---
-- name: Gather network device facts
+- name: Diff playbook
   hosts: switches-3650
   gather_facts: no
   tasks:
