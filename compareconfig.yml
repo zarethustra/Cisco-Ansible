@@ -6,18 +6,6 @@
     - name: Compare config to reference
       ios_config:
         diff_against: intended
-        intended_config: "{{ lookup('file', '/home/eng_fcc/ansible/bigdeal/backup/master.cfg') }}"
+        intended_config: "{{ lookup('file', 'backup/master.cfg') }}"       
+        # intended_config: "{{ lookup('file', '/home/eng_fcc/ansible/cisco-ansible/backup/master.cfg') }}"
       diff: true  
-      register: diff
-      
-    # - name: Display ouput  
-    #   debug: msg="Difference is {{ diff.stdout }}"
-
-    #   debug: msg="{{ output }}"   
-
-  # File look up       
-  # vars:
-  #   contents: "{{ lookup('file', '/home/eng_fcc/ansible/bigdeal/backup/master.cfg') }}"
-  # tasks:
-  #   - name: Testing
-  #     debug: msg="file is {{ contents}}"
