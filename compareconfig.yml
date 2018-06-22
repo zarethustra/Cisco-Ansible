@@ -6,6 +6,9 @@
     - name: Compare config to reference
       ios_config:
         diff_against: intended
-        intended_config: "{{ lookup('file', 'backup/master.cfg') }}"       
+        intended_config: "{{ lookup('file', 'backup/master.cfg') }}"
+        # Example of debug with default strict and the warn and full path. We need find out why adding debug causes end of file error in diff.
+        # intended_config: debug msg="{{ lookup('file', 'backup/master.cfg') }}"       
+        # intended_config: debug msg="{{ lookup('file', 'backup/master.cfg1', errors='=warn') }}"       
         # intended_config: "{{ lookup('file', '/home/eng_fcc/ansible/cisco-ansible/backup/master.cfg') }}"
       diff: true  
