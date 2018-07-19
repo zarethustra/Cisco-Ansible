@@ -1,0 +1,9 @@
+---
+- name: copy file to flash.
+  hosts: switches-3650
+  gather_facts: no
+  tasks:
+  - net_put:
+      src: test.txt
+      protocol: scp
+      dest : flash:/test.txt

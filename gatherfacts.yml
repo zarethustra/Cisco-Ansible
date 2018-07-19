@@ -1,6 +1,6 @@
 ---
 - name: Gather network device facts
-  hosts: switches-3650
+  hosts: 9300_TEST
   gather_facts: no
   tasks:
     - name: gather facts
