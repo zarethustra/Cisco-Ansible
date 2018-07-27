@@ -1,0 +1,9 @@
+---
+- name: copy file to flash.
+  hosts: LIN-WLFG-9300-F9-01
+  gather_facts: no
+  tasks:
+  - net_put:
+      src: files/test.txt
+      protocol: scp
+      dest : flash:/test.txt
