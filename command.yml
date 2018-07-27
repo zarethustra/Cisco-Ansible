@@ -1,0 +1,11 @@
+---
+- name: Test Commands
+  hosts: LIN-WLFG-9300-F9-01
+  gather_facts: no
+  tasks:
+    - name: Get flash directory
+      ios_command:
+        commands: dir | i bin
+      register: dir
+    - debug:
+        var: dir.stdout_lines
