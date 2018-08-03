@@ -20,5 +20,7 @@
       changed_when: No
     - debug:
         # var: awk_output.results[0].stdout_lines, awk_output.results[1].stdout_lines
-        msg: "Value is {{item}}"
-      with_items: "{{awk_output.results.stdout_lines}}"
+        msg: "Value is {{item.stdout}}"
+      loop: "{{awk_output.results}}"
+      loop_control:
+        label: "Output"
