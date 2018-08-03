@@ -4,6 +4,6 @@
   gather_facts: no
   tasks:
   - net_put:
-      src: files/test.txt
+      src: files/cat9k_iosxe.16.06.04.SPA.bin
       protocol: scp
-      dest : flash:/test.txt
+      dest : flash:/cat9k_iosxe.16.06.04.SPA.bin

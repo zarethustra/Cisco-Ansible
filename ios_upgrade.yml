@@ -1,0 +1,4 @@
+---
+- name: Upgrade IOS
+  hosts: LIN-WLFG-9300-F9-01
+  gather_facts: no

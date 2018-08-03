@@ -1,11 +1,24 @@
 ---
 - name: Test Commands
-  hosts: LIN-WLFG-9300-F9-01
+  hosts: ansible-test
   gather_facts: no
   tasks:
     - name: Get flash directory
       ios_command:
         commands: dir | i bin
       register: dir
+    # - debug:
+    #     var: dir
+    #     msg: "Value is echo {{ item }} | awk '{print $9}'"
+    #   with_items: "{{ dir.stdout_lines }}"
+
+    - name: Parse output
+      # shell: "echo {{dir.stdout_lines}} | awk '{print $9}' >> out.txt"
+      shell: "echo {{ item }} | awk '{print $9}'"
+      with_items: "{{ dir.stdout_lines }} "
+      register: awk_output
+      changed_when: No
     - debug:
-        var: dir.stdout_lines
+        # var: awk_output.results[0].stdout_lines, awk_output.results[1].stdout_lines
+        msg: "Value is {{item}}"
+      with_items: "{{awk_output.results.stdout_lines}}"
