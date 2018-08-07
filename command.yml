@@ -7,20 +7,30 @@
       ios_command:
         commands: dir | i bin
       register: dir
-    # - debug:
-    #     var: dir
-    #     msg: "Value is echo {{ item }} | awk '{print $9}'"
-    #   with_items: "{{ dir.stdout_lines }}"
-
-    - name: Parse output
-      # shell: "echo {{dir.stdout_lines}} | awk '{print $9}' >> out.txt"
-      shell: "echo {{ item }} | awk '{print $9}'"
-      with_items: "{{ dir.stdout_lines }} "
-      register: awk_output
-      changed_when: No
     - debug:
-        # var: awk_output.results[0].stdout_lines, awk_output.results[1].stdout_lines
-        msg: "Value is {{item.stdout}}"
-      loop: "{{awk_output.results}}"
-      loop_control:
-        label: "Output"
+        # var: dir
+        # msg: "Value is -> {{dir}}"
+        # msg: "Value is echo {{ item }} | awk '{print $9}'"
+        msg: "Match"
+      when: dir.stdout | join(' ') | regex_findall('c29601.*')
+      # with_items: "{{ dir.stdout_lines }}"
+        # msg:"{{ dir.stdout | join('') | regex_findall('Apr') }}"
+        # msg: "{{ dir.stdout | join(' ') | regex_findall('c2960.*') }}"
+
+    # - name: Parse output
+    #   # shell: "echo {{dir.stdout_lines}} | awk '{print $9}' >> out.txt"
+    #   shell: "echo {{ item }} | awk '{print $9}'"
+    #   with_items: "{{ dir.stdout_lines }} "
+    #   register: awk_output
+    #   changed_when: no
+    # - debug:
+    #     # var: awk_output.results[0].stdout_lines, awk_output.results[1].stdout_lines
+    #     msg: "Value is {{item.stdout}}"
+    #   loop: "{{awk_output.results}}"
+    #   loop_control:
+    #     label: "Output"
+    # - name: Check output
+    #   fail: msg="No match"
+    #   failed_when:
+    #     {{item.stdout}} == "TEST"
+    #   loop: "{{awk_output.results}}"
