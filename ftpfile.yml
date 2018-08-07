@@ -1,0 +1,12 @@
+---
+- name: Ftp file to device.
+  hosts: ansible-test
+  gather_facts: no
+  tasks:
+    - name: Copy file
+      ios_command:
+        commands:
+          - command: copy ftp://cisco:Tran$f3rD8ta@10.217.25.197/c2960s-universalk9-mz.152-2.E8.bin flash://c2960s-universalk9-mz.152-2.E8.bin
+            prompt: 'Destination filename [c2960s-universalk9-mz.152-2.E8.bin]?'
+            answer: "\r"
+        wait_for: result[0] contains OK
